@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin Paneli | DikkatDA</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a1a30'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='800' font-size='28' text-anchor='middle' fill='%23ff6b1a'%3EDA%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/admin/admin.css">
+</head>
+<body>
+<!--SPRITE-->
+
+<!-- ============ Giriş ============ -->
+<section class="login" id="login" hidden>
+  <div class="login-card">
+    <div class="brand"><span class="logo-word">Dikkat<span>DA</span></span><small>Admin Paneli</small></div>
+    <h1>Giriş yapın</h1>
+    <p>Değişiklikler doğrudan GitHub deposuna kaydedilir. Giriş için bu depoya yazma izni olan bir GitHub erişim anahtarı gerekir.</p>
+    <form id="loginForm" autocomplete="off">
+      <label class="field"><span>GitHub erişim anahtarı (token)</span>
+        <input type="password" id="token" placeholder="github_pat_…" required spellcheck="false"></label>
+      <label class="check"><input type="checkbox" id="remember"> <span>Bu cihazda beni hatırla</span></label>
+      <details class="adv"><summary>Depo ayarları</summary>
+        <div class="grid2">
+          <label class="field"><span>Kullanıcı / kurum</span><input id="cfgOwner"></label>
+          <label class="field"><span>Depo</span><input id="cfgRepo"></label>
+          <label class="field"><span>Yayın dalı</span><input id="cfgLive"></label>
+          <label class="field"><span>Kaynak dalı</span><input id="cfgSource"></label>
+          <label class="field full"><span>Kaynak dalında site klasörü</span><input id="cfgPrefix"></label>
+        </div>
+      </details>
+      <p class="form-error" id="loginError" hidden></p>
+      <button class="btn btn-primary" type="submit">Giriş yap</button>
+    </form>
+    <details class="help">
+      <summary>Erişim anahtarı nasıl oluşturulur?</summary>
+      <ol>
+        <li>GitHub’da <strong>Settings → Developer settings → Personal access tokens → Fine-grained tokens</strong> sayfasına gidin.</li>
+        <li><strong>Generate new token</strong> deyin, bir ad ve son kullanma tarihi verin.</li>
+        <li><strong>Repository access</strong> bölümünde <em>Only select repositories</em> seçip yalnızca site deposunu işaretleyin.</li>
+        <li><strong>Permissions → Repository permissions → Contents</strong> iznini <em>Read and write</em> yapın.</li>
+        <li>Oluşan anahtarı kopyalayıp yukarıya yapıştırın. Anahtarı kimseyle paylaşmayın.</li>
+      </ol>
+      <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Anahtar oluşturma sayfasını aç →</a>
+    </details>
+  </div>
+</section>
+
+<!-- ============ Editör ============ -->
+<div class="app" id="app" hidden>
+  <header class="topbar">
+    <div class="brand"><span class="logo-word">Dikkat<span>DA</span></span><small>Ana Sayfa Editörü</small></div>
+    <span class="dirty" id="dirty" hidden>Kaydedilmemiş değişiklikler</span>
+    <div class="top-actions">
+      <a class="btn btn-ghost" id="viewSite" href="../" target="_blank" rel="noopener"><svg class="ico"><use href="#i-globe"/></svg><span>Siteyi aç</span></a>
+      <button class="btn btn-ghost" id="togglePreview" type="button"><svg class="ico"><use href="#i-monitor"/></svg><span>Önizleme</span></button>
+      <button class="btn btn-ghost" id="revert" type="button" disabled><svg class="ico"><use href="#i-refresh"/></svg><span>Geri al</span></button>
+      <button class="btn btn-primary" id="save" type="button" disabled><svg class="ico"><use href="#i-send"/></svg><span>Kaydet ve yayınla</span></button>
+      <button class="icon-btn" id="menuBtn" type="button" aria-label="Diğer işlemler" aria-haspopup="true" aria-expanded="false"><svg class="ico"><use href="#i-dots"/></svg></button>
+      <div class="menu" id="menu" hidden>
+        <button type="button" data-act="export"><svg class="ico"><use href="#i-file"/></svg>JSON yedeğini indir</button>
+        <button type="button" data-act="import"><svg class="ico"><use href="#i-layers"/></svg>JSON yedeğini yükle</button>
+        <button type="button" data-act="reload"><svg class="ico"><use href="#i-refresh"/></svg>GitHub’dan yeniden yükle</button>
+        <button type="button" data-act="logout"><svg class="ico"><use href="#i-lock"/></svg>Çıkış yap</button>
+      </div>
+      <input type="file" id="importFile" accept="application/json" hidden>
+    </div>
+  </header>
+
+  <div class="workspace">
+    <nav class="sidenav" id="sidenav" aria-label="Bölümler"></nav>
+    <main class="editor" id="editor" tabindex="-1"></main>
+    <section class="preview" id="preview">
+      <div class="preview-bar">
+        <span>Canlı önizleme</span>
+        <div class="seg" role="group" aria-label="Cihaz">
+          <button type="button" class="on" data-device="desktop"><svg class="ico"><use href="#i-monitor"/></svg></button>
+          <button type="button" data-device="mobile"><svg class="ico"><use href="#i-mobile"/></svg></button>
+        </div>
+      </div>
+      <div class="preview-stage"><iframe id="frame" title="Ana sayfa önizlemesi"></iframe></div>
+    </section>
+  </div>
+</div>
+
+<div class="loading" id="loading"><div class="spinner"></div><span id="loadingText">Yükleniyor…</span></div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<div class="icon-picker" id="iconPicker" hidden>
+  <input type="search" placeholder="İkon ara…" id="iconSearch" aria-label="İkon ara">
+  <div class="icon-grid" id="iconGrid"></div>
+</div>
+
+<script>window.ADMIN_ICONS = /*ICONS*/[];</script>
+<script src="../assets/js/home-render.js"></script>
+<script src="../assets/admin/admin.js"></script>
+</body>
+</html>

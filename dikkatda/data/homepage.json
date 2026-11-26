@@ -1,0 +1,304 @@
+{
+  "seo": {
+    "title": "DikkatDA – Dikkat Dijital Ajans | BT, Yazılım, Altyapı ve Dijital Pazarlama",
+    "description": "DikkatDA; BT danışmanlığı, sistem ve network altyapısı, siber güvenlik, bulut, yazılım, web, dijital pazarlama, SEO ve yapay zekâ çözümlerini tek çatı altında sunar."
+  },
+  "hero": {
+    "show": true,
+    "badge": "Teknoloji + Dijital Pazarlama = Tek Çatı",
+    "title1": "İşinizi Dijital",
+    "title2": "Geleceğe Taşıyoruz",
+    "lead": "Teknoloji, yazılım, altyapı ve dijital pazarlama tek çatı altında.",
+    "primary": {
+      "text": "Ücretsiz Analiz Al",
+      "link": "ucretsiz-araclar/ucretsiz-web-sitesi-analizi.html"
+    },
+    "secondary": {
+      "text": "Hizmetleri Keşfet",
+      "link": "#hizmetler"
+    },
+    "stats": [
+      {
+        "value": "14",
+        "label": "Uzmanlık alanı"
+      },
+      {
+        "value": "116+",
+        "label": "Hizmet"
+      },
+      {
+        "value": "17",
+        "label": "Sektör deneyimi"
+      }
+    ]
+  },
+  "services": {
+    "show": true,
+    "title": "Uçtan Uca",
+    "accent": "Dijital Dönüşüm",
+    "items": [
+      {
+        "title": "BT Danışmanlığı ve Destek",
+        "text": "Teknoloji stratejisi ve çözüm danışmanlığı",
+        "icon": "laptop",
+        "link": "hizmetler/bilgi-teknolojileri/index.html"
+      },
+      {
+        "title": "Sistem ve Sunucu",
+        "text": "Sunucu kurulumu, yönetimi ve optimizasyonu",
+        "icon": "server",
+        "link": "hizmetler/sistem-ve-sunucu/index.html"
+      },
+      {
+        "title": "Network ve Altyapı",
+        "text": "Güvenli, hızlı ve ölçeklenebilir altyapılar",
+        "icon": "network",
+        "link": "hizmetler/network-ve-altyapi/index.html"
+      },
+      {
+        "title": "Siber Güvenlik",
+        "text": "Veri, sistem ve erişim güvenliği çözümleri",
+        "icon": "shield",
+        "link": "hizmetler/siber-guvenlik/index.html"
+      },
+      {
+        "title": "Bulut Teknolojileri",
+        "text": "Bulut altyapıları ve hibrit sistemler",
+        "icon": "cloud-up",
+        "link": "hizmetler/bulut-teknolojileri/index.html"
+      },
+      {
+        "title": "Yedekleme ve Veri Yönetimi",
+        "text": "Güvenli yedekleme ve felaket kurtarma",
+        "icon": "database",
+        "link": "hizmetler/yedekleme-ve-veri-yonetimi/index.html"
+      },
+      {
+        "title": "Yazılım Geliştirme",
+        "text": "İhtiyaca özel, ölçeklenebilir yazılım çözümleri",
+        "icon": "code",
+        "link": "hizmetler/yazilim-gelistirme/index.html"
+      },
+      {
+        "title": "Web Tasarım ve Geliştirme",
+        "text": "Kurumsal web siteleri ve e-ticaret çözümleri",
+        "icon": "globe",
+        "link": "hizmetler/web-tasarim-ve-gelistirme/index.html"
+      },
+      {
+        "title": "Dijital Pazarlama",
+        "text": "Markanız için ölçülebilir dijital büyüme",
+        "icon": "megaphone",
+        "link": "hizmetler/dijital-pazarlama/index.html"
+      },
+      {
+        "title": "SEO ve Analiz",
+        "text": "Arama görünürlüğü ve veri odaklı analiz",
+        "icon": "search",
+        "link": "hizmetler/seo-ve-analiz/index.html"
+      },
+      {
+        "title": "Sosyal Medya Yönetimi",
+        "text": "İçerik planlama, topluluk ve raporlama",
+        "icon": "share",
+        "link": "hizmetler/sosyal-medya-yonetimi/index.html"
+      },
+      {
+        "title": "Kreatif Tasarım ve Prodüksiyon",
+        "text": "Kurumsal kimlik, video ve 3D prodüksiyon",
+        "icon": "pen",
+        "link": "hizmetler/kreatif-tasarim-ve-produksiyon/index.html"
+      },
+      {
+        "title": "Yapay Zekâ ve Otomasyon",
+        "text": "İş süreçlerini hızlandıran akıllı çözümler",
+        "icon": "cpu",
+        "link": "hizmetler/yapay-zeka-ve-otomasyon/index.html"
+      },
+      {
+        "title": "Eğitim ve Danışmanlık",
+        "text": "Kurumsal eğitimler ve dönüşüm danışmanlığı",
+        "icon": "graduation",
+        "link": "hizmetler/egitim-ve-danismanlik/index.html"
+      }
+    ],
+    "cta": {
+      "show": true,
+      "title": "Size uygun hizmeti bulalım",
+      "text": "Ücretsiz ön danışmanlık görüşmesi planlayın",
+      "link": "ucretsiz-araclar/ucretsiz-on-danismanlik.html"
+    }
+  },
+  "free": {
+    "show": true,
+    "title": "Ücretsiz",
+    "accent": "Dijital Fırsatlar",
+    "text": "İşletmeniz için hızlı, ücretsiz ve değerli analiz olanakları.",
+    "items": [
+      {
+        "label": "Web Sitesi\nÖn Analizi",
+        "icon": "monitor",
+        "link": "ucretsiz-araclar/ucretsiz-web-sitesi-analizi.html"
+      },
+      {
+        "label": "SEO\nÖn İncelemesi",
+        "icon": "search",
+        "link": "ucretsiz-araclar/seo-on-analizi.html"
+      },
+      {
+        "label": "BT İhtiyaç\nAnalizi",
+        "icon": "layers",
+        "link": "ucretsiz-araclar/bt-ihtiyac-analizi.html"
+      },
+      {
+        "label": "Reklam Hesabı\nÖn Analizi",
+        "icon": "megaphone",
+        "link": "ucretsiz-araclar/reklam-hesabi-on-analizi.html"
+      },
+      {
+        "label": "Dijital Dönüşüm\nRehberleri",
+        "icon": "book",
+        "link": "ucretsiz-araclar/ucretsiz-egitim-ve-rehberler.html"
+      },
+      {
+        "label": "İlk Danışmanlık\nGörüşmesi",
+        "icon": "calendar",
+        "link": "ucretsiz-araclar/ucretsiz-on-danismanlik.html"
+      }
+    ]
+  },
+  "sectors": {
+    "show": true,
+    "title": "Sektör",
+    "accent": "Çözümlerimiz",
+    "text": "Farklı sektörlerin ihtiyaçlarına özel, dijital ve teknolojik çözümler geliştiriyoruz.",
+    "items": [
+      {
+        "label": "Üretim",
+        "icon": "factory",
+        "link": "sektorler/uretim-ve-sanayi.html"
+      },
+      {
+        "label": "Perakende",
+        "icon": "bag",
+        "link": "sektorler/perakende.html"
+      },
+      {
+        "label": "Lojistik",
+        "icon": "truck",
+        "link": "sektorler/lojistik.html"
+      },
+      {
+        "label": "Sağlık",
+        "icon": "heart",
+        "link": "sektorler/saglik.html"
+      },
+      {
+        "label": "Eğitim",
+        "icon": "graduation",
+        "link": "sektorler/egitim.html"
+      },
+      {
+        "label": "Hizmet",
+        "icon": "building",
+        "link": "sektorler/kobiler.html"
+      },
+      {
+        "label": "Turizm",
+        "icon": "bed",
+        "link": "sektorler/turizm-ve-otelcilik.html"
+      },
+      {
+        "label": "E-ticaret",
+        "icon": "cart",
+        "link": "sektorler/e-ticaret.html"
+      },
+      {
+        "label": "Diğer",
+        "icon": "dots",
+        "link": "sektorler/index.html"
+      }
+    ]
+  },
+  "process": {
+    "show": true,
+    "title": "Nasıl",
+    "accent": "Çalışıyoruz?",
+    "text": "Projelerinizi, planlı ve şeffaf bir süreçle hayata geçiriyoruz.",
+    "items": [
+      {
+        "title": "Keşif",
+        "icon": "search",
+        "text": "İhtiyaçlarınızı anlıyor, hedefleri netleştiriyoruz."
+      },
+      {
+        "title": "Planlama",
+        "icon": "calendar",
+        "text": "En uygun çözümü ve yol haritasını oluşturuyoruz."
+      },
+      {
+        "title": "Uygulama",
+        "icon": "code",
+        "text": "Belirlenen planı hayata geçiriyoruz."
+      },
+      {
+        "title": "Destek",
+        "icon": "headset",
+        "text": "Sürdürülebilir başarı için yanınızda oluyoruz."
+      }
+    ]
+  },
+  "refs": {
+    "show": true,
+    "title": "Referans",
+    "accent": "larımız",
+    "text": "Farklı sektörlerde, ihtiyaçlara özel dijital projeler.",
+    "link": "referanslar.html",
+    "items": [
+      {
+        "image": "",
+        "title": "Kurumsal BT Dönüşümü",
+        "subtitle": "Hizmet sektörü"
+      },
+      {
+        "image": "",
+        "title": "Depo Network Altyapısı",
+        "subtitle": "Lojistik"
+      },
+      {
+        "image": "",
+        "title": "Bulut ve Yedekleme",
+        "subtitle": "Gayrimenkul"
+      }
+    ]
+  },
+  "blog": {
+    "show": true,
+    "title": "Blog",
+    "text": "Dijital dünyadan güncel içerikler.",
+    "link": "bilgi-merkezi/blog.html",
+    "items": [
+      {
+        "image": "",
+        "title": "Dijital Dönüşümde Doğru Adımlar",
+        "link": "blog/dijital-donusumde-dogru-adimlar.html"
+      },
+      {
+        "image": "",
+        "title": "İşletmeler İçin Yapay Zekâ Fırsatları",
+        "link": "blog/isletmeler-icin-yapay-zeka-firsatlari.html"
+      }
+    ]
+  },
+  "cta": {
+    "show": true,
+    "title1": "Dijital dönüşümünüzü",
+    "title2": "birlikte",
+    "accent": "planlayalım.",
+    "text": "İhtiyaçlarınızı konuşalım, size özel çözümü birlikte tasarlayalım.",
+    "button": {
+      "text": "Teklif Al",
+      "link": "teklif-al.html"
+    }
+  }
+}

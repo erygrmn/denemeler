@@ -132,11 +132,84 @@ const contactSide = (title = 'Projenizi konuşalım', text = 'İhtiyacınızı b
           </ul>`;
 
 /* ============ 1. Ana sayfa ============ */
+// Ana sayfa içeriği dikkatda/data/homepage.json dosyasında tutulur (admin paneli bu dosyayı düzenler).
+// Dosya yoksa varsayılan içerikle oluşturulur.
+const HOME_JSON = path.join(OUT, 'data/homepage.json');
+const homeRender = require(path.join(OUT, 'assets/js/home-render.js'));
+function defaultHome() {
+  const totalSvc = allServices.reduce((n, s) => n + s.links.length, 0);
+  return {
+    seo: {
+      title: 'DikkatDA – Dikkat Dijital Ajans | BT, Yazılım, Altyapı ve Dijital Pazarlama',
+      description: 'DikkatDA; BT danışmanlığı, sistem ve network altyapısı, siber güvenlik, bulut, yazılım, web, dijital pazarlama, SEO ve yapay zekâ çözümlerini tek çatı altında sunar.',
+    },
+    hero: {
+      show: true, badge: 'Teknoloji + Dijital Pazarlama = Tek Çatı', title1: 'İşinizi Dijital', title2: 'Geleceğe Taşıyoruz',
+      lead: 'Teknoloji, yazılım, altyapı ve dijital pazarlama tek çatı altında.',
+      primary: { text: 'Ücretsiz Analiz Al', link: 'ucretsiz-araclar/ucretsiz-web-sitesi-analizi.html' },
+      secondary: { text: 'Hizmetleri Keşfet', link: '#hizmetler' },
+      stats: [{ value: String(allServices.length), label: 'Uzmanlık alanı' }, { value: totalSvc + '+', label: 'Hizmet' }, { value: String(sectors.length), label: 'Sektör deneyimi' }],
+    },
+    services: {
+      show: true, title: 'Uçtan Uca', accent: 'Dijital Dönüşüm',
+      items: allServices.map(s => ({ title: s.card || s.name, text: s.short, icon: s.icon, link: `hizmetler/${slug(s.name)}/index.html` })),
+      cta: { show: true, title: 'Size uygun hizmeti bulalım', text: 'Ücretsiz ön danışmanlık görüşmesi planlayın', link: 'ucretsiz-araclar/ucretsiz-on-danismanlik.html' },
+    },
+    free: {
+      show: true, title: 'Ücretsiz', accent: 'Dijital Fırsatlar', text: 'İşletmeniz için hızlı, ücretsiz ve değerli analiz olanakları.',
+      items: [
+        ['Web Sitesi\nÖn Analizi', 'monitor', 'ucretsiz-araclar/ucretsiz-web-sitesi-analizi.html'],
+        ['SEO\nÖn İncelemesi', 'search', 'ucretsiz-araclar/seo-on-analizi.html'],
+        ['BT İhtiyaç\nAnalizi', 'layers', 'ucretsiz-araclar/bt-ihtiyac-analizi.html'],
+        ['Reklam Hesabı\nÖn Analizi', 'megaphone', 'ucretsiz-araclar/reklam-hesabi-on-analizi.html'],
+        ['Dijital Dönüşüm\nRehberleri', 'book', 'ucretsiz-araclar/ucretsiz-egitim-ve-rehberler.html'],
+        ['İlk Danışmanlık\nGörüşmesi', 'calendar', 'ucretsiz-araclar/ucretsiz-on-danismanlik.html'],
+      ].map(([label, icon, link]) => ({ label, icon, link })),
+    },
+    sectors: {
+      show: true, title: 'Sektör', accent: 'Çözümlerimiz', text: 'Farklı sektörlerin ihtiyaçlarına özel, dijital ve teknolojik çözümler geliştiriyoruz.',
+      items: [['Üretim', 'factory', 'uretim-ve-sanayi'], ['Perakende', 'bag', 'perakende'], ['Lojistik', 'truck', 'lojistik'], ['Sağlık', 'heart', 'saglik'],
+        ['Eğitim', 'graduation', 'egitim'], ['Hizmet', 'building', 'kobiler'], ['Turizm', 'bed', 'turizm-ve-otelcilik'], ['E-ticaret', 'cart', 'e-ticaret']]
+        .map(([label, icon, id]) => ({ label, icon, link: `sektorler/${id}.html` })).concat([{ label: 'Diğer', icon: 'dots', link: 'sektorler/index.html' }]),
+    },
+    process: {
+      show: true, title: 'Nasıl', accent: 'Çalışıyoruz?', text: 'Projelerinizi, planlı ve şeffaf bir süreçle hayata geçiriyoruz.',
+      items: steps.map(([title, icon, text]) => ({ title, icon, text })),
+    },
+    refs: {
+      show: true, title: 'Referans', accent: 'larımız', text: 'Farklı sektörlerde, ihtiyaçlara özel dijital projeler.', link: 'referanslar.html',
+      items: [{ image: '', title: 'Kurumsal BT Dönüşümü', subtitle: 'Hizmet sektörü' }, { image: '', title: 'Depo Network Altyapısı', subtitle: 'Lojistik' }, { image: '', title: 'Bulut ve Yedekleme', subtitle: 'Gayrimenkul' }],
+    },
+    blog: {
+      show: true, title: 'Blog', text: 'Dijital dünyadan güncel içerikler.', link: 'bilgi-merkezi/blog.html',
+      items: C.blogPosts.slice(0, 2).map(b => ({ image: '', title: b.title, link: `blog/${b.slug}.html` })),
+    },
+    cta: {
+      show: true, title1: 'Dijital dönüşümünüzü', title2: 'birlikte', accent: 'planlayalım.',
+      text: 'İhtiyaçlarınızı konuşalım, size özel çözümü birlikte tasarlayalım.', button: { text: 'Teklif Al', link: 'teklif-al.html' },
+    },
+  };
+}
+if (!fs.existsSync(HOME_JSON)) {
+  fs.mkdirSync(path.dirname(HOME_JSON), { recursive: true });
+  fs.writeFileSync(HOME_JSON, JSON.stringify(defaultHome(), null, 2) + '\n', 'utf8');
+}
+const homeData = JSON.parse(fs.readFileSync(HOME_JSON, 'utf8'));
 write('index.html', {
-  title: 'DikkatDA – Dikkat Dijital Ajans | BT, Yazılım, Altyapı ve Dijital Pazarlama',
-  desc: 'DikkatDA; BT danışmanlığı, sistem ve network altyapısı, siber güvenlik, bulut, yazılım, web, dijital pazarlama, SEO ve yapay zekâ çözümlerini tek çatı altında sunar.',
-  body: homeMain, active: 'index.html', ld,
+  title: homeData.seo.title, desc: homeData.seo.description,
+  body: homeRender.renderHome(homeData, { heroArt: L.heroArt }), active: 'index.html', ld,
 });
+
+/* Admin paneli (site layout'u kullanmaz; arama motorlarına kapalı) */
+{
+  const iconNames = Object.keys(L.icons).filter(k => !['menu', 'x', 'instagram', 'linkedin', 'youtube', 'xsocial', 'facebook', 'chevron-down', 'chevron-right', 'arrow-up'].includes(k));
+  const sprite = `<svg xmlns="http://www.w3.org/2000/svg" style="display:none">${Object.entries(L.icons).map(([k, v]) => `<symbol id="i-${k}" viewBox="0 0 24 24">${v}</symbol>`).join('')}</svg>`;
+  const tpl = fs.readFileSync(path.join(__dirname, 'admin.html'), 'utf8')
+    .replace('<!--SPRITE-->', sprite)
+    .replace('/*ICONS*/[]', JSON.stringify(iconNames));
+  fs.mkdirSync(path.join(OUT, 'admin'), { recursive: true });
+  fs.writeFileSync(path.join(OUT, 'admin/index.html'), tpl, 'utf8');
+}
 
 /* ============ 2. Hizmetler ============ */
 {
@@ -741,6 +814,6 @@ write('404.html', { title: 'Sayfa bulunamadı | DikkatDA', desc: 'Aradığınız
 /* ============ sitemap & robots ============ */
 const today = new Date().toISOString().slice(0, 10);
 fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${written.filter(p => p !== '404.html').map(p => `  <url><loc>${SITE}${p === 'index.html' ? '' : p}</loc><lastmod>${today}</lastmod></url>`).join('\n')}\n</urlset>\n`);
-fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}sitemap.xml\n`);
+fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /admin/\n\nSitemap: ${SITE}sitemap.xml\n`);
 
 console.log(`${written.length} sayfa üretildi -> ${OUT}`);
